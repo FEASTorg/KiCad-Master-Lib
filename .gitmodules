@@ -1,0 +1,12 @@
+[submodule "arduino-kicad-library"]
+	path = arduino-kicad-library
+	url = https://github.com/Alarm-Siren/arduino-kicad-library.git
+[submodule "digikey-kicad-library"]
+	path = digikey-kicad-library
+	url = https://github.com/Digi-Key/digikey-kicad-library.git
+[submodule "SparkFun-KiCad-Libraries"]
+	path = SparkFun-KiCad-Libraries
+	url = https://github.com/sparkfun/SparkFun-KiCad-Libraries.git
+[submodule "OPL_Kicad_Library"]
+	path = OPL_Kicad_Library
+	url = https://github.com/Seeed-Studio/OPL_Kicad_Library.git
