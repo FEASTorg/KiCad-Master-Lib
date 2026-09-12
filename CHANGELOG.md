@@ -13,6 +13,9 @@ grouped by dated development era rather than by version.
 
 ### Added
 
+- `PDS1040-13` (40 V 10 A Schottky, PowerDI 5) and `ZLLS350TA` (40 V 380 mA Schottky,
+  SOD-523) in `KMLib_Discrete_Semiconductors`, with `POWERDI5_DIO` and `DIODE_SOD-523_DIO`
+  footprints (and `-L`/`-M` variants) and 3D models.
 - `LTC4311ISC6-TRMPBF` (I2C accelerator) — symbol, `SOT-6_SC_LIT` footprint and its
   variants, and 3D model.
 
