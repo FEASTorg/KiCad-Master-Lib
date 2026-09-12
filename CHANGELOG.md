@@ -32,6 +32,16 @@ grouped by dated development era rather than by version.
 - `LTC4311ISC6-TRMPBF` (I2C accelerator) — symbol, `SOT-6_SC_LIT` footprint and its
   variants, and 3D model.
 
+### Changed
+
+- `SparkFun-KiCad-Libraries` synced `2423e36a` → `5741e46f` (44 upstream commits): symbols
+  reformatted for KiCad 10, MicroMod moved out of its own symbol library (the
+  `SparkFun-MicroMod` nickname is gone from `kmlib.sym-lib-table`; no board used it),
+  new M.2-E MicroMod footprints, `LBEE5KL1YN`, an 0402 coil, and `User.1` milling
+  outlines moved to `F.Fab`/`User.2`. Of the symbols and footprints the fleet uses
+  (`WS2812B_5050`, `LED`, `ThingPlus_With_Connectors`, `LED_0603_1608Metric`,
+  `OSHW_Logo_5mm`), none changed.
+
 ### Fixed
 
 - `1217861-1_Tab`: both pins were `unspecified`, so every connection to the tab raised a

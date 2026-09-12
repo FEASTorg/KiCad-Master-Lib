@@ -25,8 +25,8 @@ libraries:
     path: vendor/SparkFun-KiCad-Libraries
     upstream: https://github.com/sparkfun/SparkFun-KiCad-Libraries.git
     ref: main
-    commit: 2423e36aead98c5756ae09366e0388ff21a82808
-    synced: "2026-07-12"
+    commit: 5741e46fc9824e1e83e5cd353fc43880803dafcb
+    synced: "2026-09-12"
     license: CC-BY-4.0
     # GitHub reports NOASSERTION; the licence is stated in the repo's README.
     license_source: README.md
