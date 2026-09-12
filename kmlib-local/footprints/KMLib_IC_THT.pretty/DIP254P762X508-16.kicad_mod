@@ -957,7 +957,7 @@
 		(uuid "bef661f9-bed9-4320-ab95-91eb28aac90f")
 	)
 	(embedded_fonts no)
-	(model "${KICAD9_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-16_W7.62mm.step"
+	(model "${KICAD10_3DMODEL_DIR}/Package_DIP.3dshapes/DIP-16_W7.62mm.step"
 		(offset
 			(xyz -7.6 17.75 0)
 		)

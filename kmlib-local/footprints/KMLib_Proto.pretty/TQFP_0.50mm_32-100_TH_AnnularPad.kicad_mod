@@ -2140,7 +2140,7 @@
 		(uuid "ad0c2675-4d7e-48ea-98bf-654668fba6a6")
 	)
 	(embedded_fonts no)
-	(model "Housings_QFP.3dshapes/TQFP-100_14x14mm_Pitch0.5mm.wrl"
+	(model "${KICAD10_3DMODEL_DIR}/Package_QFP.3dshapes/TQFP-100_14x14mm_P0.5mm.step"
 		(offset
 			(xyz 0 0 0)
 		)

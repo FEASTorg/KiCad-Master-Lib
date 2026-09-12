@@ -347,7 +347,7 @@
 		(uuid "daa5c1b8-3c8d-4e81-9bfc-50164ddb3fde")
 	)
 	(embedded_fonts no)
-	(model "${KIPRJMOD}/3d_models/USB_Micro-B_Molex_47346-0001.step"
+	(model "${KICAD10_3DMODEL_DIR}/Connector_USB.3dshapes/USB_Micro-B_Molex_47346-0001.step"
 		(offset
 			(xyz 0 0.5 0)
 		)

@@ -16,7 +16,7 @@
          (xy 0 0.425) (xy -0.01 0.425) (xy -0.348 0.763) (xy -0.348 0.56) (xy -0.55 0.56)
          (xy -0.35 0.36) (xy -0.35 -0.24)) (width 0.001))
     ))
-  (model Pin_Headers.3dshapes/Pin_Header_Straight_1x01.wrl
+  (model ${KICAD10_3DMODEL_DIR}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x01_P2.54mm_Vertical.step
     (at (xyz 0 0 0))
     (scale (xyz 1 1 1))
     (rotate (xyz 0 0 90))
