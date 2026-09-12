@@ -16,6 +16,11 @@ grouped by dated development era rather than by version.
 - `LTC4311ISC6-TRMPBF` (I2C accelerator) — symbol, `SOT-6_SC_LIT` footprint and its
   variants, and 3D model.
 
+### Fixed
+
+- `1217861-1_Tab`: both pins were `unspecified`, so every connection to the tab raised a
+  `pin_to_pin` ERC warning. Now `passive`.
+
 ### Removed
 
 - **Git LFS.** `.gitattributes` tracked `*.step` and `*.stl` through LFS, but only 14 files
