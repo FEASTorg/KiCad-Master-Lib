@@ -16,6 +16,10 @@ grouped by dated development era rather than by version.
 - `PDS1040-13` (40 V 10 A Schottky, PowerDI 5) and `ZLLS350TA` (40 V 380 mA Schottky,
   SOD-523) in `KMLib_Discrete_Semiconductors`, with `POWERDI5_DIO` and `DIODE_SOD-523_DIO`
   footprints (and `-L`/`-M` variants) and 3D models.
+- `SI7288DP-T1-GE3` (dual N-channel 40 V MOSFET) in `KMLib_Discrete_Semiconductors`, with
+  `POWERPAK_SO-8_DUAL_VIS` footprint (and `-L`/`-M` variants) and 3D model. Replaces the
+  Slice_SOLR rescue symbol, which still carried the AO4882 value, datasheet and SOIC-8
+  footprint it had been cloned from.
 - `LTC4311ISC6-TRMPBF` (I2C accelerator) — symbol, `SOT-6_SC_LIT` footprint and its
   variants, and 3D model.
 
