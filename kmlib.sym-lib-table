@@ -38,7 +38,6 @@
 	(lib (name "SparkFun-IC-Special-Function")(type "KiCad")(uri "${KICAD_MASTER_LIB}/vendor/SparkFun-KiCad-Libraries/symbols/SparkFun-IC-Special-Function.kicad_sym")(options "")(descr "vendored"))
 	(lib (name "SparkFun-Jumper")(type "KiCad")(uri "${KICAD_MASTER_LIB}/vendor/SparkFun-KiCad-Libraries/symbols/SparkFun-Jumper.kicad_sym")(options "")(descr "vendored"))
 	(lib (name "SparkFun-LED")(type "KiCad")(uri "${KICAD_MASTER_LIB}/vendor/SparkFun-KiCad-Libraries/symbols/SparkFun-LED.kicad_sym")(options "")(descr "vendored"))
-	(lib (name "SparkFun-MicroMod")(type "KiCad")(uri "${KICAD_MASTER_LIB}/vendor/SparkFun-KiCad-Libraries/symbols/SparkFun-MicroMod.kicad_sym")(options "")(descr "vendored"))
 	(lib (name "SparkFun-PowerSymbol")(type "KiCad")(uri "${KICAD_MASTER_LIB}/vendor/SparkFun-KiCad-Libraries/symbols/SparkFun-PowerSymbol.kicad_sym")(options "")(descr "vendored"))
 	(lib (name "SparkFun-RF")(type "KiCad")(uri "${KICAD_MASTER_LIB}/vendor/SparkFun-KiCad-Libraries/symbols/SparkFun-RF.kicad_sym")(options "")(descr "vendored"))
 	(lib (name "SparkFun-Regulator")(type "KiCad")(uri "${KICAD_MASTER_LIB}/vendor/SparkFun-KiCad-Libraries/symbols/SparkFun-Regulator.kicad_sym")(options "")(descr "vendored"))
