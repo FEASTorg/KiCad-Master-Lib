@@ -13,6 +13,15 @@ grouped by dated development era rather than by version.
 
 ### Added
 
+- `scripts/lint_lib.py` — static checks over `kmlib-local/`: dead 3D-model paths,
+  symbol Footprints with no library prefix or naming a footprint that does not exist,
+  footprint name differing from file name (errors); `unspecified` pins, non-URL
+  datasheets, empty Footprints (warnings).
+- `scripts/check_parse.py` — loads every first-party library through `kicad-cli`.
+- `scripts/gen_lib_tables.py --check` — exits non-zero when the committed tables are
+  stale.
+- `.github/workflows/lint.yml` — runs all three on every pull request, the parse step in
+  the fleet's pinned KiCad 10 image.
 - `PDS1040-13` (40 V 10 A Schottky, PowerDI 5) and `ZLLS350TA` (40 V 380 mA Schottky,
   SOD-523) in `KMLib_Discrete_Semiconductors`, with `POWERDI5_DIO` and `DIODE_SOD-523_DIO`
   footprints (and `-L`/`-M` variants) and 3D models.
@@ -27,6 +36,15 @@ grouped by dated development era rather than by version.
 
 - `1217861-1_Tab`: both pins were `unspecified`, so every connection to the tab raised a
   `pin_to_pin` ERC warning. Now `passive`.
+- 17 footprint `(model ...)` paths that resolved nowhere — KiCad 5 library names
+  (`Housings_QFP.3dshapes/…`, `Pin_Headers.3dshapes/…`), `${KIPRJMOD}`-relative paths, and
+  `${KICAD9_3DMODEL_DIR}` — now point at the equivalent KiCad 10 stock models via
+  `${KICAD10_3DMODEL_DIR}`.
+- Six symbol Footprints that could never resolve: `NTGS4111PT1G`, the two Phoenix PTSA
+  terminals (no library prefix), the Wago 2606 and both Keystone test points (wrong
+  footprint name).
+- `KMLib_Aesthetic/BREAD_logo_v1.kicad_mod` declared itself `LOGO`; KiCad keys
+  footprints by the name inside the file.
 
 ### Removed
 

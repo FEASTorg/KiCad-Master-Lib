@@ -38,12 +38,35 @@ See [docs/getting_started.md](docs/getting_started.md) for setup instructions or
 [feastorg.github.io/kicad-master-lib](https://feastorg.github.io/kicad-master-lib/) for
 full documentation.
 
+## Checks
+
+Before pushing a change to `kmlib-local/`, run what CI runs:
+
+```sh
+python3 scripts/lint_lib.py             # static checks, no KiCad needed
+python3 scripts/gen_lib_tables.py --check
+python3 scripts/check_parse.py          # loads every library through kicad-cli
+```
+
+`lint_lib.py` fails on the mistakes that are mechanical to fix and that KiCad reports
+late or never: a footprint whose `(model ...)` path resolves nowhere, a symbol whose
+Footprint has no `LIB:` prefix or names a footprint that does not exist, a footprint
+whose name differs from its file name. It warns, without failing, on what needs a
+datasheet in hand: `unspecified` pins, a Datasheet that is not a URL, an empty
+Footprint. `--strict` promotes warnings to errors. Model paths must be
+`${KMLIB_LOCAL}/3dmodels/...` for first-party models or `${KICAD10_3DMODEL_DIR}/...`
+for KiCad's own.
+
+`check_parse.py` needs `kicad-cli`; with the Flatpak, set
+`KICAD_CLI="flatpak run --command=kicad-cli org.kicad.KiCad"`. CI runs it in the same
+pinned KiCad image the board repos use.
+
 ## Layout
 
 ```
 kmlib-local/     first-party FEAST symbols, footprints, 3D models, design blocks
 vendor/          upstream libraries, vendored (see vendor.yaml)
-scripts/         library table generation, vendoring, drift detection
+scripts/         library table generation, vendoring, drift detection, lint
 ```
 
 ## Vendored upstream libraries
