@@ -253,7 +253,7 @@
 		(uuid "9b84e6e1-c2cc-4171-8ef8-022c4e9fbd9e")
 	)
 	(embedded_fonts no)
-	(model "Resistors_SMD.3dshapes/R_0805_HandSoldering.wrl"
+	(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_1206_3216Metric.step"
 		(offset
 			(xyz 0 0 0)
 		)

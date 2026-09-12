@@ -214,7 +214,7 @@
 		(uuid "5c477f46-4cc2-4068-997e-9b7923c3eb61")
 	)
 	(embedded_fonts no)
-	(model "${KIPRJMOD}/3d_models/LED_1206_3216Metric.wrl"
+	(model "${KICAD10_3DMODEL_DIR}/LED_SMD.3dshapes/LED_1206_3216Metric.step"
 		(offset
 			(xyz 0 0 0)
 		)

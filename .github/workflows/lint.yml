@@ -1,0 +1,66 @@
+name: Lint
+
+# Two gates on every change to the first-party libraries:
+#
+#   lint   scripts/lint_lib.py + gen_lib_tables.py --check. Pure Python, no
+#          KiCad. Catches what KiCad reports late or never: dead 3D-model
+#          paths, symbol footprints with no library prefix, stale lib tables.
+#   parse  scripts/check_parse.py. Loads every library through kicad-cli in
+#          the same pinned image the board repos use, so "it parses" means
+#          the fleet's KiCad, not whichever one a developer saved with.
+#
+# Both check out without 3D models (~283 MB of the ~356 MB clone); neither
+# check reads one. lint_lib.py verifies model paths against the git index.
+
+# No path filter: these are required checks, and a required check that never
+# runs (docs-only PR) blocks the merge as "expected" instead of passing.
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            /*
+            !*.step
+            !*.STEP
+            !*.stp
+            !*.STP
+            !*.wrl
+            !*.WRL
+          sparse-checkout-cone-mode: false
+
+      - name: Lint libraries
+        run: python3 scripts/lint_lib.py
+
+      - name: Library tables match disk
+        run: python3 scripts/gen_lib_tables.py --check
+
+  parse:
+    runs-on: ubuntu-latest
+    # Same image and digest as feastorg/bread-infra kibot-ci.yml (KiCad 10.0.4).
+    container: ghcr.io/inti-cmnb/kicad10_auto:1.9.0-5_k10.0.4_d13.2@sha256:46b44e62b483aba94085ba53f3efd15f9b2625c191ac2f6931ba34058bec1bfb
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            /*
+            !*.step
+            !*.STEP
+            !*.stp
+            !*.STP
+            !*.wrl
+            !*.WRL
+          sparse-checkout-cone-mode: false
+
+      - name: Load every library with kicad-cli
+        run: python3 scripts/check_parse.py

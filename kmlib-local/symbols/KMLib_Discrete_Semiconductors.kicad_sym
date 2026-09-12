@@ -520,7 +520,7 @@
 				(justify left top)
 			)
 		)
-		(property "Footprint" "SOT95P275X110-6N"
+		(property "Footprint" "KMLib_IC_SMD:SOT95P275X110-6N"
 			(at 21.59 -94.92 0)
 			(show_name no)
 			(do_not_autoplace no)

@@ -178,7 +178,7 @@
 		(uuid "b0d7cca4-b09a-49ac-b88f-9335be95b904")
 	)
 	(embedded_fonts no)
-	(model "Housings_SOT-89.3dshapes/SOT89-3_Housing_Handsoldering.wrl"
+	(model "${KICAD10_3DMODEL_DIR}/Package_TO_SOT_SMD.3dshapes/SOT-89-3.step"
 		(offset
 			(xyz 0 0 0)
 		)

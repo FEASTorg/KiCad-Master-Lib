@@ -17,12 +17,15 @@ sym-lib-table cannot consume them. They remain on disk for manual import.
 Nickname is the library's basename. Where two libraries would claim the same
 nickname, the parent directory is prefixed to disambiguate, deterministically.
 
-    python3 scripts/gen_lib_tables.py
+    python3 scripts/gen_lib_tables.py            # rewrite the tables
+    python3 scripts/gen_lib_tables.py --check    # exit 1 if they are stale
 """
 
 from __future__ import annotations
 
+import argparse
 import os
+import sys
 from collections import Counter
 from pathlib import Path
 
@@ -72,22 +75,45 @@ def nicknames(paths: list[Path], suffix: str) -> dict[Path, str]:
     return {p: n.replace(" ", "_") for p, n in result.items()}
 
 
-def main() -> None:
+def render(filename: str, tag: str, suffix: str, is_dir: bool) -> tuple[str, int]:
+    paths = discover(suffix, is_dir)
+    nicks = nicknames(paths, suffix)
+    lines = [f"({tag}", "\t(version 7)"]
+    for p in paths:
+        rel = p.relative_to(ROOT).as_posix()
+        src = "first-party" if rel.startswith("kmlib-local") else "vendored"
+        lines.append(
+            f'\t(lib (name "{nicks[p]}")(type "KiCad")'
+            f'(uri "{VAR}/{rel}")(options "")(descr "{src}"))'
+        )
+    lines.append(")\n")
+    return "\n".join(lines), len(paths)
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser(description=__doc__.split("\n", 1)[0])
+    ap.add_argument("--check", action="store_true",
+                    help="compare against the committed tables instead of writing them")
+    args = ap.parse_args()
+
+    stale = []
     for filename, tag, suffix, is_dir in KINDS:
-        paths = discover(suffix, is_dir)
-        nicks = nicknames(paths, suffix)
-        lines = [f"({tag}", "\t(version 7)"]
-        for p in paths:
-            rel = p.relative_to(ROOT).as_posix()
-            src = "first-party" if rel.startswith("kmlib-local") else "vendored"
-            lines.append(
-                f'\t(lib (name "{nicks[p]}")(type "KiCad")'
-                f'(uri "{VAR}/{rel}")(options "")(descr "{src}"))'
-            )
-        lines.append(")\n")
-        (ROOT / filename).write_text("\n".join(lines))
-        print(f"{filename:<30} {len(paths):>3} libraries")
+        text, n = render(filename, tag, suffix, is_dir)
+        target = ROOT / filename
+        if args.check:
+            current = target.read_text() if target.exists() else ""
+            state = "ok" if current == text else "STALE"
+            if state == "STALE":
+                stale.append(filename)
+            print(f"{filename:<30} {n:>3} libraries  {state}")
+        else:
+            target.write_text(text)
+            print(f"{filename:<30} {n:>3} libraries")
+    if stale:
+        print(f"{len(stale)} table(s) stale -- run scripts/gen_lib_tables.py and commit")
+        return 1
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())
